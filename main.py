@@ -3,6 +3,10 @@ from data import question_data
 from quiz_brain import QuizBrain
 
 question_bank = []
+still_has_question = True
+
+def end_game(score):
+    print(f"You've finished the quiz. Your final score was {score}!")
 
 for question in question_data:
         question_text = question["text"]
@@ -11,4 +15,11 @@ for question in question_data:
         question_bank.append(new_question)
     
 quiz = QuizBrain(question_bank)
-quiz.next_question()
+
+while quiz.still_has_question():
+    quiz.next_question()
+
+print("You've complete the quiz")
+print(f"Your final score was: {quiz.score}/{len(question_bank)}")
+
+
